@@ -22,26 +22,26 @@ function registerBook(){
   let tr = document.createElement("tr");
 
   for (i = 0; i < existingTr.length; i++) {
-    let ths = existingTr[i].querySelectorAll("th");
-    if(ths[1].textContent === inputCategory.value && ths[2].textContent === inputBookName.value){
+    let tds = existingTr[i].querySelectorAll("td");
+    if(tds[1].textContent === inputCategory.value && tds[2].textContent === inputBookName.value){
       alert("같은 카테고리 안에 동일한 책이 등록되어 있습니다.");
       return;
     }
   }
 
-  let num = document.createElement("th");
+  let num = document.createElement("td");
   num.textContent = table.children.length + 1;
 
-  let category = document.createElement("th");
+  let category = document.createElement("td");
   category.textContent = inputCategory.value;
 
-  let bookName = document.createElement("th");
+  let bookName = document.createElement("td");
   bookName.textContent = inputBookName.value;
 
-  let price = document.createElement("th");
+  let price = document.createElement("td");
   price.textContent = inputPrice.value + "원";
 
-  let deleteTh = document.createElement("th");
+  let deleteTh = document.createElement("td");
   let deleteBtn = document.createElement("button");
   deleteBtn.textContent = "삭제";
   deleteBtn.addEventListener("click", () => {
@@ -70,8 +70,8 @@ function sortTable(sortType) {
     rows = table.rows;
     for (i = 0; i < (rows.length - 1); i++) {
       shouldSwitch = false;
-      x = rows[i].getElementsByTagName("th")[3];
-      y = rows[i + 1].getElementsByTagName("th")[3];
+      x = rows[i].getElementsByTagName("td")[3];
+      y = rows[i + 1].getElementsByTagName("td")[3];
       
       if(sortType === "ascending"){
         if (parseInt(x.textContent) > parseInt(y.textContent)) {
@@ -99,8 +99,8 @@ function searchTable(){
   let tr = table.getElementsByTagName('tr');
 
   for (i = 0; i < tr.length; i++) {
-    let ths = tr[i].querySelectorAll('th');
-    let txtValue = ths[2].textContent;
+    let tds = tr[i].querySelectorAll('td');
+    let txtValue = tds[2].textContent;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
       tr[i].style.display = "";
     } else {
